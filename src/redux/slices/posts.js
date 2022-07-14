@@ -11,10 +11,10 @@ const initialState = {
   },
 };
 
-const postSlice = createSlice({
+const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducer: {},
 });
 
-export const postsReducer = postSlice.reducer;
+export const postsReducer = postsSlice.reducer;

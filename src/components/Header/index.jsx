@@ -4,9 +4,8 @@ import Button from '@mui/material/Button';
 
 import styles from './Header.module.scss';
 import Container from '@mui/material/Container';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { logout, selectIsAuth } from '../../redux/slices/auth';
+import {useDispatch, useSelector} from "react-redux";
+import {logout, selectIsAuth} from "../../redux/slices/auth";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -14,8 +13,8 @@ export const Header = () => {
 
   const onClickLogout = () => {
     if (window.confirm('Вы действительно хотите выйти?')) {
-      dispatch(logout());
-      window.localStorage.removeItem('token');
+    dispatch(logout());
+    window.localStorage.removeItem('token');
     }
   };
 
@@ -24,7 +23,7 @@ export const Header = () => {
       <Container maxWidth="lg">
         <div className={styles.inner}>
           <Link className={styles.logo} to="/">
-            <div>EGORYAN BLOG</div>
+            <div>DACORM BLOG</div>
           </Link>
           <div className={styles.buttons}>
             {isAuth ? (

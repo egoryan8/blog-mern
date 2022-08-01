@@ -10,12 +10,11 @@ import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import styles from './Post.module.scss';
 import { UserInfo } from '../UserInfo';
 import { PostSkeleton } from './Skeleton';
-import {useDispatch} from "react-redux";
-import {fetchRemovePost} from "../../redux/slices/posts";
-import {logout} from "../../redux/slices/auth";
+import { useDispatch } from 'react-redux';
+import { fetchRemovePost } from '../../redux/slices/posts';
 
 export const Post = ({
-  id,
+  _id,
   title,
   createdAt,
   imageUrl,
@@ -35,7 +34,7 @@ export const Post = ({
 
   const onClickRemove = () => {
     if (window.confirm('Вы действительно хотите удалить статью?')) {
-      dispatch(fetchRemovePost(id));
+      dispatch(fetchRemovePost(_id));
     }
   };
 
@@ -43,7 +42,7 @@ export const Post = ({
     <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
       {isEditable && (
         <div className={styles.editButtons}>
-          <Link to={`/posts/${id}/edit`}>
+          <Link to={`/posts/${_id}/edit`}>
             <IconButton color="primary">
               <EditIcon />
             </IconButton>
@@ -64,7 +63,7 @@ export const Post = ({
         <UserInfo {...user} additionalText={createdAt} />
         <div className={styles.indention}>
           <h2 className={clsx(styles.title, { [styles.titleFull]: isFullPost })}>
-            {isFullPost ? title : <Link to={`/posts/${id}`}>{title}</Link>}
+            {isFullPost ? title : <Link to={`/posts/${_id}`}>{title}</Link>}
           </h2>
           <ul className={styles.tags}>
             {tags.map((name) => (
